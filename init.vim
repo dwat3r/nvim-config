@@ -32,6 +32,7 @@ return require('packer').startup(function(use)
   use 'tpope/vim-unimpaired'
   use { 'ful1e5/onedark.nvim' }
   use { 'tpope/vim-surround' }
+  use { 'nvim-treesitter/nvim-treesitter' }
 end)
 EOF
 
@@ -53,21 +54,21 @@ else
   imap jk <Esc>
   map <leader>q :wqa<cr>
   nnoremap <C-s> :w<cr>
-" lua << EOF
-" require'nvim-treesitter.configs'.setup {
-"     highlight = { enable = true },
-"     incremental_selection = { 
-"       enable = true, 
-" 	    keymaps = {
-" 		init_selection = "<C-g>",
-" 		node_incremental = "<C-g>",
-" 		scope_incremental = "<leader>vv",
-" 		node_decremental = "<leader>vV",
-" 	  }
-"   },
-"   textobjects = { enable = true },
-" }
-" EOF
+lua << EOF
+ require'nvim-treesitter.configs'.setup {
+    highlight = { enable = true },
+    incremental_selection = { 
+      enable = true, 
+	    keymaps = {
+ 		init_selection = "<C-g>",
+ 		node_incremental = "<C-g>",
+ 		scope_incremental = "<leader>vv",
+ 		node_decremental = "<leader>vV",
+ 	  }
+   },
+   textobjects = { enable = true },
+ }
+EOF
 " yoink
 
 " let g:yoinkIncludeDeleteOperations = 1 
